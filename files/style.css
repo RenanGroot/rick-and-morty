@@ -1,0 +1,91 @@
+@font-face{
+    font-family: Rick and Morty Font;
+    src:url("fontes/get_schwifty.ttf");
+}
+
+.app-title h1{
+    font-family: Rick and Morty Font;
+    color:#00cad5;
+    text-shadow: 0 0 7px lightgoldenrodyellow;
+    transition: 0.4s;
+}
+
+.app-title h1:hover{
+    color: white;
+    text-shadow: 0 0 10px lightgreen;
+}
+
+.perfil{
+    border-radius: 50%;
+    box-shadow: .1rem .2rem .5rem black;
+}
+
+#resultados button{
+    border: 0;
+    padding: 0;
+    text-align: left;
+    margin-bottom: 1vw;
+}
+
+#resultados {
+    padding-right:0;
+}
+
+#resultados .list-group-item{
+    transition: 0.5s;
+}
+
+#resultados .list-group-item:hover {
+    background-color: lightblue;
+}
+
+#nomePesquisa:focus {
+    box-shadow: 0 0 0 .3rem rgba(160, 238, 198,.35);
+}
+
+#detalhes p {
+    margin-bottom:0;
+}
+
+.btn-carregar{
+    width:51%;
+    background: lightgrey;
+}
+
+.alive {
+    color:green;
+}
+.dead {
+    color:rgb(200,0,0);
+}
+.unknown{
+    color:grey;
+}
+
+#status{
+    background: #fafd7c99;
+}
+
+#generos{
+    background: #fae48b99;
+}
+.filtros{
+    margin-bottom:3vw;
+    background:rgb(255, 255, 255);
+}
+
+.filtros, #generos, #status{
+    border-radius:5px;
+}
+
+.modal-title{
+    margin-left: auto;
+}
+
+body {
+    background-image: url(images/bg1.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}

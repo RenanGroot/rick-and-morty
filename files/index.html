@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- JQuery Link-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!--Bootstrap CSS Link-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <!--Bootstrap JS Link-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+    <!--Links do CSS e JS-->
+    <script src="ricknmorty.js"></script>
+    <link href="style.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Rick and Morty</title>
+</head>
+<body>
+    <!-- Modal -->
+    <div class="modal fade" id="perfilModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Rick Sanchez</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="perfilContainer" class="container-fluid">
+                    <div id="perfilRow" class="row justify-content-center">
+                        <div class="col-10">
+                            <img class="perfil img-fluid" src="https://rickandmortyapi.com/api/character/avatar/1.jpeg">
+                            <h4 class="alive">Alive</h4>
+                        </div>
+                        <div class="col-10" id="detalhes">
+                            <p>Espécie: Humano</p>
+                            <p class="fst-italic">Genereo: Male</p>
+                            <p>Origem: Earth</p>
+                            <p>Ultimo registro de Localização: Earth</p>
+                        </div>
+                        <div class="col-6">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Lista de Episodios</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="espisodios">
+                                    <tr>
+                                        <td>Episodio 1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Episodio 2</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    <!-- Conteudo da Página-->
+    <div id="conteudo" class="container">
+        <div class="row justify-content-center">
+            <div class="col-7 text-center mb-2">
+                <a class="app-title text-decoration-none" href="index.html"><h1 class="display-4">Rick and Morty App</h1>
+                </a>           
+            </div>
+            <div class="col-md-7 p-0 m-2">
+                <input class="form-control" type="text" autofocus placeholder="Procure por seu personagem favorito" id="nomePesquisa" onkeyup="pesquisar()">
+            </div>
+            <div class="col-md-7 filtros">
+                <div class="row shadow" id="status">
+                    <div class="col-md-2">
+                        <h5>Status: </h5>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="status" value="alive" onclick="pesquisar()">
+                            <label class="form-check-label">Alive</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="status" value="dead" onclick="pesquisar()">
+                        <label class="form-check-label">Dead</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="status" value="unknown" onclick="pesquisar()">
+                        <label class="form-check-label">Unknown</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" id="generos">
+                    <div class="col-2">
+                        <h5>Gênero: </h5>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="genero" value="female" onclick="pesquisar()">
+                        <label class="form-check-label">Female</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="genero" value="male" onclick="pesquisar()">
+                        <label class="form-check-label">Male</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="genero" value="genderless" onclick="pesquisar()">
+                        <label class="form-check-label">Genderless</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="genero" value="unknown" onclick="pesquisar()">
+                        <label class="form-check-label">Unknown</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-8 text-center mb-2">
+                <h2 class="text-light">Lista de personagens:</h2>
+            </div>
+            <div id="resultados" class="col-md-6 list-group text-center">
+
+            </div>
+            <button id="botaoMaisResultados" class="btn btn-carregar mb-2" onclick="carregarMaisResultados()">Mais Resultados</button>
+        </div>
+        <div class="row">
+            <div class="col-md-1">
+                <a href="#"><button class="btn btn-danger w-100 overflow-auto">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-eject" viewBox="0 0 16 16">
+                        <path d="M7.27 1.047a1 1 0 0 1 1.46 0l6.345 6.77c.6.638.146 1.683-.73 1.683H1.656C.78 9.5.326 8.455.926 7.816L7.27 1.047zM14.346 8.5 8 1.731 1.654 8.5h12.692zM.5 11.5a1 1 0 0 1 1-1h13a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1h-13a1 1 0 0 1-1-1v-1zm14 0h-13v1h13v-1z"/>
+                    </svg>
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
