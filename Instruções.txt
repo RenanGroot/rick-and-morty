@@ -1,2 +1,1 @@
 Para rodar o projeto, execute a página através do atalho "Rick and Morty App".
-(ATENÇÃO: É necessário acesso a internet para o mesmo rodar corretamente!)
